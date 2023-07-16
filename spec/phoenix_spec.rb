@@ -1,5 +1,4 @@
-require 'rspec'
-require './lib/phoenix'
+require 'spec_helper'
 
 RSpec.describe Phoenix do
 	describe "The Phoenix was Self-created at the Beginning of Time" do
@@ -9,7 +8,7 @@ RSpec.describe Phoenix do
 			expect(phoenix.name).to eq("Bennu")
 		end
 
-		xit "is born golden, stoic, and without a pharaoh" do
+		it "is born golden, stoic, and without a pharaoh" do
 			phoenix = Phoenix.new("Bennu")
 
 			expect(phoenix.color).to eq("golden")
@@ -17,7 +16,7 @@ RSpec.describe Phoenix do
 			expect(phoenix.pharaoh).to eq(nil)
 		end
 
-		xit "changes color & mood when feeling an emotion 1, 2, 3, and 4 times" do
+		it "changes color & mood when feeling an emotion 1, 2, 3, and 4 times" do
 			phoenix = Phoenix.new("Bennu")
 
 			phoenix.feels_emotion(:cognizance) 
@@ -37,7 +36,7 @@ RSpec.describe Phoenix do
 			expect(phoenix.mood).to eq("incandescent")
 		end
 
-		xit "has emotional awareness about how many times it has the same emotion" do
+		it "has emotional awareness about how many times it has the same emotion" do
 			phoenix = Phoenix.new("Bennu")
 
 			phoenix.feels_emotion(:exuberance)
@@ -53,7 +52,7 @@ RSpec.describe Phoenix do
 			expect(phoenix.emotional_awareness.include?(:sorrow)).to eq(false)
 		end 
 
-		xit "releases a tear after feeling the same emotion on the 3rd time ONLY" do
+		it "releases a tear after feeling the same emotion on the 3rd time ONLY" do
 			phoenix = Phoenix.new("Bennu")
 			
 			2.times { phoenix.feels_emotion(:confusion) }
@@ -66,11 +65,11 @@ RSpec.describe Phoenix do
 			expect(phoenix.releases_tear?).to be false
 		end
 
-		xit "bursts into flames and is reborn after feeling the same emotion 5 times" do
+		it "bursts into flames and is reborn after feeling the same emotion 5 times" do
 			phoenix = Phoenix.new("Bennu")
-
+      
 			5.times { phoenix.feels_emotion(:revelation) }
-
+      
 			expect(phoenix.color).to eq("golden")
 			expect(phoenix.mood).to eq("stoic")
 			expect(phoenix.pharaoh).to eq(nil)
